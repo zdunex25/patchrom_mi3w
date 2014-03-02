@@ -1,0 +1,8 @@
+#To keep addons private
+other/*.apk
+
+#To keep patch private
+ThemeManager/*.patch
+
+#To avoid pushing base
+MIUIPolska_cancro*.zip
