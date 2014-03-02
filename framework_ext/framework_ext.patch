@@ -1,0 +1,33 @@
+
+--- a/framework_ext.jar.out/smali/miui/drm/ThemeReceiver.smali
++++ b/framework_ext.jar.out/smali/miui/drm/ThemeReceiver.smali
+@@ -508,13 +508,13 @@
+     invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+ 
+     .line 48
+-    new-instance v2, Lmiui/content/res/ThemeRuntimeManager;
++    #new-instance v2, Lmiui/content/res/ThemeRuntimeManager;
+ 
+-    iget-object v3, p0, Lmiui/drm/ThemeReceiver;->mContext:Landroid/content/Context;
++    #iget-object v3, p0, Lmiui/drm/ThemeReceiver;->mContext:Landroid/content/Context;
+ 
+-    invoke-direct {v2, v3}, Lmiui/content/res/ThemeRuntimeManager;-><init>(Landroid/content/Context;)V
++    #invoke-direct {v2, v3}, Lmiui/content/res/ThemeRuntimeManager;-><init>(Landroid/content/Context;)V
+ 
+-    invoke-virtual {v2}, Lmiui/content/res/ThemeRuntimeManager;->restoreDefault()V
++    #invoke-virtual {v2}, Lmiui/content/res/ThemeRuntimeManager;->restoreDefault()V
+ 
+     .line 53
+     .end local v0           #i$:Ljava/util/Iterator;
+
+--- a/framework_ext.jar.out/smali/miui/content/res/IconCustomizer.smali
++++ b/framework_ext.jar.out/smali/miui/content/res/IconCustomizer.smali
+@@ -302,7 +302,7 @@
+     .line 399
+     sget-object v0, Lmiui/content/res/IconCustomizer;->sIconMapping:Ljava/util/Map;
+ 
+-    const-string v1, "com.sec.android.app.camera.Camera.png"
++    const-string v1, "com.android.camera.Camera.png"
+ 
+     const-string v2, "com.android.camera.png"
+ 
