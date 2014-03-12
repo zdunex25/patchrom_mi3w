@@ -107,7 +107,7 @@ mv -f temp/zipaligned-signed-Weather.apk out/system/app/Weather.apk
 echo -e "\nPreparing icon mods.."
 
 #cp -f other/ThemeManager.apk out/system/app/ThemeManager.apk
-cp -f other/m7Parts.apk out/system/app/m7Parts.apk
+#cp -f other/m7Parts.apk out/system/app/m7Parts.apk
 cp -f other/icons out/system/media/theme/default/icons
 cp -f other/miui_mod_icons/*.png out/system/media/theme/miui_mod_icons/
 
@@ -130,7 +130,7 @@ rm -r out
 
 echo -e "\nSigning rom.."
 
-java -jar '/home/z25/patchromv542/mi3w/other/signapk.jar' '/home/z25/patchromv542/mi3w/other/testkey.x509.pem' '/home/z25/patchromv542/mi3w/other/testkey.pk8' "tosign-MIUIPolska_cancro-$version-4.3-z25.zip" "MIUIPolska_cancro-$version-4.3-z25.zip"
+java -jar '/home/z25/patchromv542/mi3w/other/signapk.jar' '/home/z25/patchromv542/mi3w/other/testkey.x509.pem' '/home/z25/patchromv542/mi3w/other/testkey.pk8' "tosign-MIUIPolska_cancro_$version-4.3-z25.zip" "MIUIPolska_cancro-$version-4.3-z25.zip"
 rm "tosign-MIUIPolska_cancro-$version-4.3-z25.zip"
 echo -e "\n"
 read -p "Done, MIUIPolska_cancro-$version-4.3-z25.zip has been created in root of mi3w directory, copy to sd and flash it!"

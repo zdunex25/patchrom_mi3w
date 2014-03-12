@@ -16,7 +16,7 @@
 
 --- a/MiuiSystemUI/smali/com/android/systemui/statusbar/phone/PhoneStatusBar.smali
 +++ b/MiuiSystemUI/smali/com/android/systemui/statusbar/phone/PhoneStatusBar.smali
-@@ -1329,6 +1329,47 @@
+@@ -2363,6 +2363,47 @@
      return-object v0
  .end method
  
@@ -61,10 +61,10 @@
 +    return v4
 +.end method
 +
- .method private bH()V
+ .method private cd()V
      .locals 3
  
-@@ -9046,6 +9046,10 @@
+@@ -7909,6 +7909,10 @@
      .line 666
      const v0, 0x7f030021
  
