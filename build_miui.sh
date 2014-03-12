@@ -31,36 +31,36 @@ cd ext
 zip '../../out/system/framework/framework_ext.jar' -q 'classes.dex'
 cd ..
 
-echo -e "\nPreparing statusbar layout mod.."
-
-cp ../MiuiSystemUI/MiuiSystemUI.patch MiuiSystemUI.patch
-'../../tools/apktool' --quiet d -f '../out/system/app/MiuiSystemUI.apk'
-cp -r ../MiuiSystemUI/res/layout/* MiuiSystemUI/res/layout
-$GIT_APPLY MiuiSystemUI.patch
-for file in `find $2 -name *.rej`
-do
-    echo "$file patch failed"
-    exit 1
-done
-'../../tools/apktool' --quiet b -f 'MiuiSystemUI' 'patched-MiuiSystemUI.apk'
-mkdir -p ui/res/layout
-mkdir ui/res/xml
-unzip -j -q 'patched-MiuiSystemUI.apk' classes.dex -d 'ui'
-unzip -j -q 'patched-MiuiSystemUI.apk' resources.arsc -d 'ui'
-cd ui/res
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/xml/advanced_settings.xml -d 'xml'
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/signal_cluster_view_ios.xml -d 'layout'
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/status_bar_center.xml -d 'layout'
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/status_bar_ios.xml -d 'layout'
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/status_bar_simple.xml -d 'layout'
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/super_status_bar_center.xml -d 'layout'
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/super_status_bar_ios.xml -d 'layout'
-cd ..
-zip '../../out/system/app/MiuiSystemUI.apk' -q 'classes.dex'
-zip '../../out/system/app/MiuiSystemUI.apk' -q 'resources.arsc'
-zip '../../out/system/app/MiuiSystemUI.apk' -q -r 'res'
-cd ..
-
+#echo -e "\nPreparing statusbar layout mod.."
+#
+#cp ../MiuiSystemUI/MiuiSystemUI.patch MiuiSystemUI.patch
+#'../../tools/apktool' --quiet d -f '../out/system/app/MiuiSystemUI.apk'
+#cp -r ../MiuiSystemUI/res/layout/* MiuiSystemUI/res/layout
+#$GIT_APPLY MiuiSystemUI.patch
+#for file in `find $2 -name *.rej`
+#do
+#    echo "$file patch failed"
+#    exit 1
+#done
+#'../../tools/apktool' --quiet b -f 'MiuiSystemUI' 'patched-MiuiSystemUI.apk'
+#mkdir -p ui/res/layout
+#mkdir ui/res/xml
+#unzip -j -q 'patched-MiuiSystemUI.apk' classes.dex -d 'ui'
+#unzip -j -q 'patched-MiuiSystemUI.apk' resources.arsc -d 'ui'
+#cd ui/res
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/xml/advanced_settings.xml -d 'xml'
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/signal_cluster_view_ios.xml -d 'layout'
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/status_bar_center.xml -d 'layout'
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/status_bar_ios.xml -d 'layout'
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/status_bar_simple.xml -d 'layout'
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/super_status_bar_center.xml -d 'layout'
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/super_status_bar_ios.xml -d 'layout'
+#cd ..
+#zip '../../out/system/app/MiuiSystemUI.apk' -q 'classes.dex'
+#zip '../../out/system/app/MiuiSystemUI.apk' -q 'resources.arsc'
+#zip '../../out/system/app/MiuiSystemUI.apk' -q -r 'res'
+#cd ..
+#
 echo -e "\nPreparing strip unicode mod.."
 
 cp ../Mms/Mms.patch Mms.patch
@@ -124,13 +124,13 @@ rm META-INF/MANIFEST.MF
 
 echo -e "\nCreating flashable rom.."
 
-zip -q -r "../tosign-MIUIPolska_cancro-$version-4.3-z25.zip" "data" "META-INF" "recovery" "system" "boot.img" "emmc_appsboot.mbn" "file_contexts" "NON-HLOS.bin" "rpm.mbn" "sbl1.mbn" "sdi.mbn" "tz.mbn"
+zip -q -r "../tosign-MIUIPolska_cancro_$version-4.3-z25.zip" "data" "META-INF" "recovery" "system" "boot.img" "emmc_appsboot.mbn" "file_contexts" "NON-HLOS.bin" "rpm.mbn" "sbl1.mbn" "sdi.mbn" "tz.mbn"
 cd ..
 rm -r out
 
 echo -e "\nSigning rom.."
 
-java -jar '/home/z25/patchromv542/mi3w/other/signapk.jar' '/home/z25/patchromv542/mi3w/other/testkey.x509.pem' '/home/z25/patchromv542/mi3w/other/testkey.pk8' "tosign-MIUIPolska_cancro_$version-4.3-z25.zip" "MIUIPolska_cancro-$version-4.3-z25.zip"
-rm "tosign-MIUIPolska_cancro-$version-4.3-z25.zip"
+java -jar '/home/z25/patchromv542/mi3w/other/signapk.jar' '/home/z25/patchromv542/mi3w/other/testkey.x509.pem' '/home/z25/patchromv542/mi3w/other/testkey.pk8' "tosign-MIUIPolska_cancro_$version-4.3-z25.zip" "MIUIPolska_cancro_$version-4.3-z25.zip"
+rm "tosign-MIUIPolska_cancro_$version-4.3-z25.zip"
 echo -e "\n"
-read -p "Done, MIUIPolska_cancro-$version-4.3-z25.zip has been created in root of mi3w directory, copy to sd and flash it!"
+read -p "Done, MIUIPolska_cancro_$version-4.3-z25.zip has been created in root of mi3w directory, copy to sd and flash it!"
