@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/ll_frame" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/iv_launcher" android:layout_width="0.0dip" android:layout_height="0.0dip" android:src="@drawable/app_icon" />
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="0.0dip" android:src="@drawable/notification_divider" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/ll_barbage" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/iv_garbage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_garbage_notification" />
+            <TextView android:textSize="11.0sp" android:textColor="#66ffffff" android:gravity="center" android:id="@id/iv_garbage_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/menu_item_notification_garbage_text_error" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/notification_divider" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/ll_power" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/iv_power" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_power_notification" />
+            <TextView android:textSize="11.0sp" android:textColor="#66ffffff" android:gravity="center" android:id="@id/iv_power_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/menu_item_notification_power_text" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/notification_divider" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/ll_antispam" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/iv_antispam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_antispam_notification_normal" />
+            <TextView android:textSize="11.0sp" android:textColor="#66ffffff" android:gravity="center" android:id="@id/iv_antispam_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/menu_item_notification_antispam_text_normal" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

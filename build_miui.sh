@@ -74,6 +74,18 @@ do
 done
 '../../tools/apktool' --quiet b -f 'Mms' 'Mms.apk'
 
+echo -e "\nPreparing secutiry notification mod.."
+
+'../../tools/apktool' --quiet d -f '../out/system/app/Settings.apk'
+cp -r ../Settings/res/layout/* Settings/res/layout
+'../../tools/apktool' --quiet b -f 'Settings' 'patched-Settings.apk'
+mkdir -p nf/res/layout
+cd nf/res
+unzip -j -q '../../patched-Settings.apk' res/layout/m_notification_remoteview.xml -d 'layout'
+cd ..
+zip '../../out/system/app/Settings.apk' -q -r 'res'
+cd ..
+
 echo -e "\nPreparing theme mod.."
 
 cp ../ThemeManager/ThemeManager.patch ThemeManager.patch
