@@ -4,5 +4,6 @@ other/*.apk
 #To keep patch private
 ThemeManager/*.patch
 
-#To avoid pushing base
+#To avoid pushing base and logs
 MIUIPolska_cancro*.zip
+*.log
