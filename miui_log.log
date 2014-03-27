@@ -1,0 +1,197 @@
+Log of /home/z25/patchromv542/mi3w/build_miui.sh 
+Fri Mar 21 18:27:12 2014
+
+PATCHROM_BRANCH  = jellybean42
+ANDROID_PLATFORM = v17
+PORT_ROOT        = /home/z25/patchromv542
+ANDROID_TOP      = 
+ANDROID_OUT      = 
+PORT_PRODUCT     = mi3w
+USE_ANDROID_OUT  = 
+ANDROID_BRANCH   = 
+I: Framework installed to: /home/z25/apktool/framework/1.apk
+I: Framework installed to: /home/z25/apktool/framework/6.apk
+
+Preparing frameworks..
+Checking patch temp/framework_ext.jar.out/smali/miui/drm/ThemeReceiver$1.smali...
+Checking patch temp/framework_ext.jar.out/smali/miui/content/res/IconCustomizer.smali...
+Applied patch temp/framework_ext.jar.out/smali/miui/drm/ThemeReceiver$1.smali cleanly.
+Applied patch temp/framework_ext.jar.out/smali/miui/content/res/IconCustomizer.smali cleanly.
+
++++++++++++
++ Summary +
++++++++++++
++ Apply patch successfully!
+
+Preparing strip unicode mod..
+Checking patch temp/Mms/smali/com/android/mms/data/a.smali...
+Checking patch temp/Mms/smali/com/android/mms/transaction/q.smali...
+Checking patch temp/Mms/smali/com/android/mms/ui/de.smali...
+Checking patch temp/Mms/smali/com/android/mms/ui/cV.smali...
+Applied patch temp/Mms/smali/com/android/mms/data/a.smali cleanly.
+Applied patch temp/Mms/smali/com/android/mms/transaction/q.smali cleanly.
+Applied patch temp/Mms/smali/com/android/mms/ui/de.smali cleanly.
+Applied patch temp/Mms/smali/com/android/mms/ui/cV.smali cleanly.
+
++++++++++++
++ Summary +
++++++++++++
++ Apply patch successfully!
+
+Preparing secutiry notification mod..
+aapt: warning: string 'about_agps_message' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_global_gesture_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_long_press_timeout_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_power_button_ends_call_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl zh_CN
+aapt: warning: string 'accessibility_script_injection_allowed' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_script_injection_button_allow' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_script_injection_button_disallow' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_script_injection_disallowed' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_script_injection_security_warning_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_script_injection_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_service_disable_warning_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_service_disable_warning_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_service_security_warning_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_service_security_warning_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_service_state_off' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_service_state_on' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_speak_password_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'accessibility_toggle_script_injection_preference_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'apn_list_category_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'apn_predefine_change_dialog_notice' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'back_long_press' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'back_long_press_timeout' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_dun_acceptance_dialog_text' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_dun_connection_permission_request' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl zh_CN zh_TW
+aapt: warning: string 'bluetooth_dun_profile_summary_connected' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_dun_profile_summary_not_connected' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_dun_profile_summary_use_for' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_dun_remember_choice' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_dun_request' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_enter_pin_msg_hs' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_ftp_acceptance_dialog_text' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl zh_TW
+aapt: warning: string 'bluetooth_ftp_connection_permission_request' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl zh_CN zh_TW
+aapt: warning: string 'bluetooth_ftp_remember_choice' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_ftp_request' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_map_acceptance_dialog_text' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_map_connection_permission_request' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: zh_CN zh_TW
+aapt: warning: string 'bluetooth_map_profile_summary_connected' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_map_profile_summary_use_for' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_map_request' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_mas_acceptance_dialog_text' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: zh_TW
+aapt: warning: string 'bluetooth_mas_request' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: zh_TW
+aapt: warning: string 'bluetooth_not_discoverable' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_pbap_connection_permission_request' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: zh_CN zh_TW
+aapt: warning: string 'bluetooth_profile_name' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_profile_sap' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_sap_acceptance_dialog_text' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl zh_TW
+aapt: warning: string 'bluetooth_sap_connection_permission_request' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl zh_CN zh_TW
+aapt: warning: string 'bluetooth_sap_profile_summary_connected' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_sap_profile_summary_not_connected' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_sap_profile_summary_use_for' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_sap_remember_choice' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_sap_request' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_visibility' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'bluetooth_visibility_timeout_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'build_author' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'category_key_settings' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: en
+aapt: warning: string 'confirm_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'cp_settings' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'default_sdcard_select_msg' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'device_additional_status' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'device_additional_status_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'device_default_name' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'dolby_dialogue_enhancer' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'dolby_ieq_flat' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'dolby_ieq_focused' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'dolby_ieq_open' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'dolby_ieq_rich' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'dolby_preset_select' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'dolby_surround_virtualizer' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'dolby_volume_leveler' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'enable_assist_key_long_press' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'enable_back_long_press' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'enable_sim' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'enable_traces_dialog_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'enable_traces_summary_all' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'enable_traces_summary_none' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'enable_traces_summary_num' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'enable_traces_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'enable_wifi_tether' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'galaxy_settings' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'incoming_call_app_name' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'launch_error' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'launch_main' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'launch_main_label' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'loading' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'lock_intro_message' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl zh_TW
+aapt: warning: string 'lock_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'move_app_to_where' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'multi_sim_settings_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'multi_sim_settings_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'music_plus_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'music_plus_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'osb_settings' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'polish_translation' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'ring_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'ring_vibrate_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'safe_relative' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl zh_TW
+aapt: warning: string 'screensaver_settings_summary_on' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl zh_TW
+aapt: warning: string 'screensaver_test' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'screensaver_timeout_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'screensaver_timeout_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'screensaver_timeout_zero_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'sim_absent' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'sim_pin_attempts' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'sim_pin_disabled' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl zh_CN zh_TW
+aapt: warning: string 'sim_pin_enabled' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl zh_CN zh_TW
+aapt: warning: string 'sim_status_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'skip_button_label' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'sms_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'sound_switch' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'status_esn_number' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'track_frame_time_summary' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'user_details_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'user_market_apps_heading' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'user_market_requires_pin' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'user_max_content_rating' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'user_name_title' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'user_restrictions_heading' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'user_summary_active' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'user_summary_inactive' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'user_system_apps_heading' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'user_you_section' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'wifi_p2p_menu_advanced' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'wifi_p2p_menu_create_group' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+aapt: warning: string 'wifi_p2p_menu_remove_group' has no default translation in /home/z25/patchromv542/mi3w/temp/Settings/res; found: pl
+
+Preparing theme mod..
+Checking patch temp/ThemeManager/smali/miui/resourcebrowser/controller/online/DrmService.smali...
+Checking patch temp/ThemeManager/smali/miui/resourcebrowser/view/ResourceOperationHandler.smali...
+Checking patch temp/ThemeManager/smali/miui/resourcebrowser/view/ResourceOperationView$2.smali...
+Applied patch temp/ThemeManager/smali/miui/resourcebrowser/controller/online/DrmService.smali cleanly.
+Applied patch temp/ThemeManager/smali/miui/resourcebrowser/view/ResourceOperationHandler.smali cleanly.
+Applied patch temp/ThemeManager/smali/miui/resourcebrowser/view/ResourceOperationView$2.smali cleanly.
+
++++++++++++
++ Summary +
++++++++++++
++ Apply patch successfully!
+aapt: warning: string 'resource_account_current' has no default translation in /home/z25/patchromv542/mi3w/temp/ThemeManager/res; found: en
+aapt: warning: string 'app_nohave_net' has no default translation in /home/z25/patchromv542/mi3w/temp/Weather/res; found: pl
+aapt: warning: string 'install_tencent' has no default translation in /home/z25/patchromv542/mi3w/temp/Weather/res; found: pl
+aapt: warning: string 'share_qq' has no default translation in /home/z25/patchromv542/mi3w/temp/Weather/res; found: pl
+aapt: warning: string 'share_sina' has no default translation in /home/z25/patchromv542/mi3w/temp/Weather/res; found: pl
+
+Preparing icon mods..
+
+Replacing WeatherBZ with MIUI Weather..
+
+Creating flashable rom..
+
+Signing rom..
+
+
+Done, MIUIPolska_cancro_4.3.21-4.3-z25.zip has been created in root of mi3w directory, copy to sd and flash it!
+Fri Mar 21 18:31:58 2014
+----------------

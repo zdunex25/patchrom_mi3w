@@ -11,6 +11,9 @@ cd ..
 cd mi3w
 unzip -q MIUIPolska_cancro_$version-4.3.zip -d out
 
+'../tools/apktool' if 'out/system/framework/framework-res.apk'
+'../tools/apktool' if 'out/system/framework/framework-miui-res.apk'
+
 echo -e "\nPreparing frameworks.."
 
 mkdir -p temp/tosign
