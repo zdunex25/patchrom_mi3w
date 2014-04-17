@@ -1,7 +1,7 @@
 
 --- a/framework_ext.jar.out/smali/miui/drm/ThemeReceiver$1.smali
 +++ b/framework_ext.jar.out/smali/miui/drm/ThemeReceiver$1.smali
-@@ -116,13 +116,13 @@
+@@ -118,13 +118,13 @@
      invoke-static {v2, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
  
      .line 45
@@ -19,15 +19,3 @@
  
      .line 49
      .end local v1           #location:Ljava/lang/String;
-
---- a/framework_ext.jar.out/smali/miui/content/res/IconCustomizer.smali
-+++ b/framework_ext.jar.out/smali/miui/content/res/IconCustomizer.smali
-@@ -302,7 +302,7 @@
-     .line 434
-     sget-object v0, Lmiui/content/res/IconCustomizer;->sIconMapping:Ljava/util/Map;
- 
--    const-string v1, "com.sec.android.app.camera.Camera.png"
-+    const-string v1, "com.android.camera.Camera.png"
- 
-     const-string v2, "com.android.camera.png"
- 

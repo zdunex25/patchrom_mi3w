@@ -14,26 +14,26 @@ unzip -q MIUIPolska_cancro_$version-4.3.zip -d out
 '../tools/apktool' if 'out/system/framework/framework-res.apk'
 '../tools/apktool' if 'out/system/framework/framework-miui-res.apk'
 
-echo -e "\nPreparing frameworks.."
+#echo -e "\nPreparing frameworks.."
 
 mkdir -p temp/tosign
 cd temp
 
-cp ../framework_ext/framework_ext.patch framework_ext.patch
-'../../tools/apktool' --quiet d -f '../out/system/framework/framework_ext.jar'
-$GIT_APPLY framework_ext.patch
-for file in `find $2 -name *.rej`
-do
-    echo "$file patch failed"
-    exit 1
-done
-'../../tools/apktool' --quiet b -f 'framework_ext.jar.out' 'framework_ext.jar'
-mkdir ext
-unzip -j -q 'framework_ext.jar' classes.dex -d 'ext'
-cd ext
-zip '../../out/system/framework/framework_ext.jar' -q 'classes.dex'
-cd ..
-
+#cp ../framework_ext/framework_ext.patch framework_ext.patch
+#'../../tools/apktool' --quiet d -f '../out/system/framework/framework_ext.jar'
+#$GIT_APPLY framework_ext.patch
+#for file in `find $2 -name *.rej`
+#do
+#    echo "$file patch failed"
+#    exit 1
+#done
+#'../../tools/apktool' --quiet b -f 'framework_ext.jar.out' 'framework_ext.jar'
+#mkdir ext
+#unzip -j -q 'framework_ext.jar' classes.dex -d 'ext'
+#cd ext
+#zip '../../out/system/framework/framework_ext.jar' -q 'classes.dex'
+#cd ..
+#
 #echo -e "\nPreparing statusbar layout mod.."
 #
 #cp ../MiuiSystemUI/MiuiSystemUI.patch MiuiSystemUI.patch
@@ -89,23 +89,23 @@ cd ..
 zip '../../out/system/app/Settings.apk' -q -r 'res'
 cd ..
 
-echo -e "\nPreparing theme mod.."
-
-cp ../ThemeManager/ThemeManager.patch ThemeManager.patch
-'../../tools/apktool' --quiet d -f '../out/system/app/ThemeManager.apk'
-$GIT_APPLY ThemeManager.patch
-for file in `find $2 -name *.rej`
-do
-    echo "$file patch failed"
-    exit 1
-done
-'../../tools/apktool' --quiet b -f 'ThemeManager' 'patched-ThemeManager.apk'
-mkdir mc
-unzip -j -q 'patched-ThemeManager.apk' classes.dex -d 'mc'
-cd mc
-zip '../../out/system/app/ThemeManager.apk' -q 'classes.dex'
-cd ..
-
+#echo -e "\nPreparing theme mod.."
+#
+#cp ../ThemeManager/ThemeManager.patch ThemeManager.patch
+#'../../tools/apktool' --quiet d -f '../out/system/app/ThemeManager.apk'
+#$GIT_APPLY ThemeManager.patch
+#for file in `find $2 -name *.rej`
+#do
+#    echo "$file patch failed"
+#    exit 1
+#done
+#'../../tools/apktool' --quiet b -f 'ThemeManager' 'patched-ThemeManager.apk'
+#mkdir mc
+#unzip -j -q 'patched-ThemeManager.apk' classes.dex -d 'mc'
+#cd mc
+#zip '../../out/system/app/ThemeManager.apk' -q 'classes.dex'
+#cd ..
+#
 '../../tools/apktool' --quiet d -f '../../miui/XXHDPI/system/app/Weather.apk'
 cp -u -r ../../miuipolska/Polish/main/Weather.apk/* Weather
 '../../tools/apktool' --quiet b -f 'Weather' 'Weather.apk'
