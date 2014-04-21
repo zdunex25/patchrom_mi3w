@@ -9,7 +9,7 @@ export PATH=$PATH:/home/$USER/android-sdk-linux/tools:/home/$USER/android-sdk-li
 cd ..
 . build/envsetup.sh -p mi3w
 cd mi3w
-unzip -q MIUIPolska_cancro_$version-4.3.zip -d out
+unzip -q MIUIPolska_cancro_$version-4.4.zip -d out
 
 '../tools/apktool' if 'out/system/framework/framework-res.apk'
 '../tools/apktool' if 'out/system/framework/framework-miui-res.apk'
@@ -37,7 +37,7 @@ cd temp
 #echo -e "\nPreparing statusbar layout mod.."
 #
 #cp ../MiuiSystemUI/MiuiSystemUI.patch MiuiSystemUI.patch
-#'../../tools/apktool' --quiet d -f '../out/system/app/MiuiSystemUI.apk'
+#'../../tools/apktool' --quiet d -f '../out/system/priv-app/MiuiSystemUI.apk'
 #cp -r ../MiuiSystemUI/res/layout/* MiuiSystemUI/res/layout
 #$GIT_APPLY MiuiSystemUI.patch
 #for file in `find $2 -name *.rej`
@@ -59,15 +59,15 @@ cd temp
 #unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/super_status_bar_center.xml -d 'layout'
 #unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/super_status_bar_ios.xml -d 'layout'
 #cd ..
-#zip '../../out/system/app/MiuiSystemUI.apk' -q 'classes.dex'
-#zip '../../out/system/app/MiuiSystemUI.apk' -q 'resources.arsc'
-#zip '../../out/system/app/MiuiSystemUI.apk' -q -r 'res'
+#zip '../../out/system/priv-app/MiuiSystemUI.apk' -q 'classes.dex'
+#zip '../../out/system/priv-app/MiuiSystemUI.apk' -q 'resources.arsc'
+#zip '../../out/system/priv-app/MiuiSystemUI.apk' -q -r 'res'
 #cd ..
 #
 echo -e "\nPreparing strip unicode mod.."
 
 cp ../Mms/Mms.patch Mms.patch
-'../../tools/apktool' --quiet d -f '../out/system/app/Mms.apk'
+'../../tools/apktool' --quiet d -f '../out/system/priv-app/Mms.apk'
 cp -r ../Mms/theos0o Mms/smali/com/android/mms/
 $GIT_APPLY Mms.patch
 for file in `find $2 -name *.rej`
@@ -79,14 +79,14 @@ done
 
 echo -e "\nPreparing secutiry notification mod.."
 
-'../../tools/apktool' --quiet d -f '../out/system/app/Settings.apk'
+'../../tools/apktool' --quiet d -f '../out/system/priv-app/Settings.apk'
 cp -r ../Settings/res/layout/* Settings/res/layout
 '../../tools/apktool' --quiet b -f 'Settings' 'patched-Settings.apk'
 mkdir -p nf/res/layout
 cd nf/res
 unzip -j -q '../../patched-Settings.apk' res/layout/m_notification_remoteview.xml -d 'layout'
 cd ..
-zip '../../out/system/app/Settings.apk' -q -r 'res'
+zip '../../out/system/priv-app/Settings.apk' -q -r 'res'
 cd ..
 
 #echo -e "\nPreparing theme mod.."
@@ -116,7 +116,7 @@ java -jar '/home/z25/patchromv542/mi3w/other/signapk.jar' '/home/z25/patchromv54
 '../other/zipalign' -f 4 "signed-Weather.apk" "zipaligned-signed-Weather.apk"
 cd ..
 
-mv -f temp/zipaligned-signed-Mms.apk out/system/app/Mms.apk
+mv -f temp/zipaligned-signed-Mms.apk out/system/priv-app/Mms.apk
 mv -f temp/zipaligned-signed-Weather.apk out/system/app/Weather.apk
 
 echo -e "\nPreparing icon mods.."
@@ -128,7 +128,8 @@ cp -f other/miui_mod_icons/*.png out/system/media/theme/miui_mod_icons/
 
 echo -e "\nReplacing WeatherBZ with MIUI Weather.."
 
-rm -f out/system/app/pro.burgerz.weather_v4.9.9.beta21.apk
+rm -f out/system/app/FancyWeatherIconsTheme.apk
+rm -f out/system/app/pro.burgerz.weather*.apk
 rm -f out/system/app/WeatherDummy.apk
 rm -r temp
 
@@ -139,13 +140,13 @@ rm META-INF/MANIFEST.MF
 
 echo -e "\nCreating flashable rom.."
 
-zip -q -r "../tosign-MIUIPolska_cancro_$version-4.3-z25.zip" "data" "META-INF" "recovery" "system" "boot.img" "emmc_appsboot.mbn" "file_contexts" "NON-HLOS.bin" "rpm.mbn" "sbl1.mbn" "sdi.mbn" "tz.mbn"
+zip -q -r "../tosign-MIUIPolska_cancro_$version-4.4-z25.zip" "data" "META-INF" "recovery" "system" "boot.img" "emmc_appsboot.mbn" "file_contexts" "NON-HLOS.bin" "rpm.mbn" "sbl1.mbn" "sdi.mbn" "tz.mbn"
 cd ..
 rm -r out
 
 echo -e "\nSigning rom.."
 
-java -jar '/home/z25/patchromv542/mi3w/other/signapk.jar' '/home/z25/patchromv542/mi3w/other/testkey.x509.pem' '/home/z25/patchromv542/mi3w/other/testkey.pk8' "tosign-MIUIPolska_cancro_$version-4.3-z25.zip" "MIUIPolska_cancro_$version-4.3-z25.zip"
-rm "tosign-MIUIPolska_cancro_$version-4.3-z25.zip"
+java -jar '/home/z25/patchromv542/mi3w/other/signapk.jar' '/home/z25/patchromv542/mi3w/other/testkey.x509.pem' '/home/z25/patchromv542/mi3w/other/testkey.pk8' "tosign-MIUIPolska_cancro_$version-4.4-z25.zip" "MIUIPolska_cancro_$version-4.4-z25.zip"
+rm "tosign-MIUIPolska_cancro_$version-4.4-z25.zip"
 echo -e "\n"
-read -p "Done, MIUIPolska_cancro_$version-4.3-z25.zip has been created in root of mi3w directory, copy to sd and flash it!"
+read -p "Done, MIUIPolska_cancro_$version-4.4-z25.zip has been created in root of mi3w directory, copy to sd and flash it!"
