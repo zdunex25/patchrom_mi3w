@@ -19,8 +19,8 @@ echo -e "\nPreparing frameworks.."
 mkdir -p temp/tosign
 cd temp
 
-cp ../framework_ext/DrmManager.patch DrmManager.patch
-cp ../framework_ext/IconCustomizer.patch IconCustomizer.patch
+cp ../framework2/DrmManager.patch DrmManager.patch
+cp ../framework2/IconCustomizer.patch IconCustomizer.patch
 '../../tools/apktool' --quiet d -f '../out/system/framework/framework2.jar'
 $GIT_APPLY DrmManager.patch
 for file in `find $2 -name *.rej`
@@ -93,7 +93,7 @@ fi
 #
 echo -e "\nPreparing strip unicode mod.."
 
-cp ../Mms/Mms.patch Mms4.patch
+cp ../Mms/Mms.patch Mms.patch
 '../../tools/apktool' --quiet d -f '../out/system/priv-app/Mms.apk'
 cp -r ../Mms/theos0o Mms/smali/com/android/mms/
 $GIT_APPLY Mms.patch
@@ -158,9 +158,9 @@ rm -f out/system/app/FancyWeatherIconsTheme.apk
 rm -f out/system/app/pro.burgerz.weather*.apk
 rm -f out/system/app/WeatherDummy.apk
 
-#echo -e "\nInit app_process for WSM.."
-#mv out/system/bin/app_process out/system/bin/app_process.orig
-#cp other/app_process_xposed_sdk16 out/system/bin/app_process
+echo -e "\nInit app_process for WSM.."
+mv out/system/bin/app_process out/system/bin/app_process.orig
+cp other/app_process_xposed_sdk16 out/system/bin/app_process
 
 rm -r temp
 
