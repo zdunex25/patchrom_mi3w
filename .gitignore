@@ -2,6 +2,7 @@
 other/*.apk
 
 #To keep patch private
+framework2/DrmManager.patch
 ThemeManager/*.patch
 
 #To avoid pushing base and logs
