@@ -17,24 +17,24 @@
 +++ b/Mms/smali/com/android/mms/transaction/r.smali
 @@ -115,6 +115,12 @@
      .line 77
-     iput-object p3, p0, Lcom/android/mms/transaction/r;->oc:Ljava/lang/String;
+     iput-object p3, p0, Lcom/android/mms/transaction/r;->oG:Ljava/lang/String;
  
 +    invoke-static {p3}, Lcom/android/mms/theos0o/GsmEncoding;->textToGSM(Ljava/lang/String;)Ljava/lang/String;
 +
 +    move-result-object v2
 +
-+    iput-object v2, p0, Lcom/android/mms/transaction/r;->oc:Ljava/lang/String;
++    iput-object v2, p0, Lcom/android/mms/transaction/r;->oG:Ljava/lang/String;
 +
      .line 78
      if-eqz p2, :cond_0
  
 
---- a/Mms/smali/com/android/mms/ui/dc.smali
-+++ b/Mms/smali/com/android/mms/ui/dc.smali
+--- a/Mms/smali/com/android/mms/ui/dd.smali
++++ b/Mms/smali/com/android/mms/ui/dd.smali
 @@ -5859,7 +5859,11 @@
      const/4 v1, 0x0
  
-     .line 1276
+     .line 1281
 -    invoke-static {p0, v1}, Landroid/telephony/SmsMessage;->calculateLength(Ljava/lang/CharSequence;Z)[I
 +    invoke-static {p0}, Lcom/android/mms/theos0o/GsmEncoding;->seqToGSM(Ljava/lang/CharSequence;)Ljava/lang/String;
 +
