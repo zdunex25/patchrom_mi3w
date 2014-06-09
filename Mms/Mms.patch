@@ -1,7 +1,7 @@
 
 --- a/Mms/smali/com/android/mms/data/a.smali
 +++ b/Mms/smali/com/android/mms/data/a.smali
-@@ -3212,6 +3212,10 @@
+@@ -3216,6 +3216,10 @@
  
      move-result-object v1
  
@@ -17,21 +17,21 @@
 +++ b/Mms/smali/com/android/mms/transaction/r.smali
 @@ -115,6 +115,12 @@
      .line 77
-     iput-object p3, p0, Lcom/android/mms/transaction/r;->oG:Ljava/lang/String;
+     iput-object p3, p0, Lcom/android/mms/transaction/r;->oN:Ljava/lang/String;
  
 +    invoke-static {p3}, Lcom/android/mms/theos0o/GsmEncoding;->textToGSM(Ljava/lang/String;)Ljava/lang/String;
 +
 +    move-result-object v2
 +
-+    iput-object v2, p0, Lcom/android/mms/transaction/r;->oG:Ljava/lang/String;
++    iput-object v2, p0, Lcom/android/mms/transaction/r;->oN:Ljava/lang/String;
 +
      .line 78
      if-eqz p2, :cond_0
  
 
---- a/Mms/smali/com/android/mms/ui/dd.smali
-+++ b/Mms/smali/com/android/mms/ui/dd.smali
-@@ -5859,7 +5859,11 @@
+--- a/Mms/smali/com/android/mms/ui/df.smali
++++ b/Mms/smali/com/android/mms/ui/df.smali
+@@ -6009,7 +6009,11 @@
      const/4 v1, 0x0
  
      .line 1281
@@ -45,8 +45,8 @@
      move-result-object v0
  
 
---- a/Mms/smali/com/android/mms/ui/cK.smali
-+++ b/Mms/smali/com/android/mms/ui/cK.smali
+--- a/Mms/smali/com/android/mms/ui/cM.smali
++++ b/Mms/smali/com/android/mms/ui/cM.smali
 @@ -306,6 +306,10 @@
  
      move-result-object v0
