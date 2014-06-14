@@ -17,13 +17,13 @@
 +++ b/Mms/smali/com/android/mms/transaction/r.smali
 @@ -115,6 +115,12 @@
      .line 77
-     iput-object p3, p0, Lcom/android/mms/transaction/r;->oN:Ljava/lang/String;
+     iput-object p3, p0, Lcom/android/mms/transaction/r;->oU:Ljava/lang/String;
  
 +    invoke-static {p3}, Lcom/android/mms/theos0o/GsmEncoding;->textToGSM(Ljava/lang/String;)Ljava/lang/String;
 +
 +    move-result-object v2
 +
-+    iput-object v2, p0, Lcom/android/mms/transaction/r;->oN:Ljava/lang/String;
++    iput-object v2, p0, Lcom/android/mms/transaction/r;->oU:Ljava/lang/String;
 +
      .line 78
      if-eqz p2, :cond_0

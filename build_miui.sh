@@ -139,9 +139,9 @@ cd ..
 cp -u -r ../../miuipolska/Polish/main/Weather.apk/* Weather
 '../../tools/apktool' --quiet b -f 'Weather' 'Weather.apk'
 
-java -jar '/home/z25/patchromv542/mi3w/other/signapk.jar' '/home/z25/patchromv542/mi3w/other/platform.x509.pem' '/home/z25/patchromv542/mi3w/other/platform.pk8' "Mms.apk" "signed-Mms.apk"
+java -jar '/home/kamilz/patchromv542/mi3w/other/signapk.jar' '/home/kamilz/patchromv542/mi3w/other/platform.x509.pem' '/home/kamilz/patchromv542/mi3w/other/platform.pk8' "Mms.apk" "signed-Mms.apk"
 '../other/zipalign' -f 4 "signed-Mms.apk" "zipaligned-signed-Mms.apk"
-java -jar '/home/z25/patchromv542/mi3w/other/signapk.jar' '/home/z25/patchromv542/mi3w/other/platform.x509.pem' '/home/z25/patchromv542/mi3w/other/platform.pk8' "Weather.apk" "signed-Weather.apk"
+java -jar '/home/kamilz/patchromv542/mi3w/other/signapk.jar' '/home/kamilz/patchromv542/mi3w/other/platform.x509.pem' '/home/kamilz/patchromv542/mi3w/other/platform.pk8' "Weather.apk" "signed-Weather.apk"
 '../other/zipalign' -f 4 "signed-Weather.apk" "zipaligned-signed-Weather.apk"
 cd ..
 
@@ -179,7 +179,7 @@ rm -r out
 
 echo -e "\nSigning rom.."
 
-java -jar '/home/z25/patchromv542/mi3w/other/signapk.jar' '/home/z25/patchromv542/mi3w/other/testkey.x509.pem' '/home/z25/patchromv542/mi3w/other/testkey.pk8' "tosign-MIUIPolska_cancro_$version-4.4-z25.zip" "MIUIPolska_cancro_$version-4.4-z25.zip"
+java -jar '/home/kamilz/patchromv542/mi3w/other/signapk.jar' '/home/kamilz/patchromv542/mi3w/other/testkey.x509.pem' '/home/kamilz/patchromv542/mi3w/other/testkey.pk8' "tosign-MIUIPolska_cancro_$version-4.4-z25.zip" "MIUIPolska_cancro_$version-4.4-z25.zip"
 rm "tosign-MIUIPolska_cancro_$version-4.4-z25.zip"
 echo -e "\n"
 
