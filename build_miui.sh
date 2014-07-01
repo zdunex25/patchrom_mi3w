@@ -4,7 +4,6 @@ y=`date +.%-m.%-d`
 z=${x: -1:1}
 version=$z$y
 GIT_APPLY=../../tools/git.apply
-export PATH=$PATH:/home/$USER/android-sdk-linux/tools:/home/$USER/android-sdk-linux/platform-tools
 
 cd ..
 . build/envsetup.sh -p mi3w
@@ -104,20 +103,20 @@ do
 done
 '../../tools/apktool' --quiet b -f 'Mms' 'Mms.apk'
 
-echo -e "\nPreparing secutiry notification mod.."
-
-'../../tools/apktool' --quiet d -f '../out/system/priv-app/Settings.apk'
-cp -r ../Settings/res/layout/* Settings/res/layout
-'../../tools/apktool' --quiet b -f 'Settings' 'patched-Settings.apk'
-mkdir -p nf/res/layout
-mkdir -p nf/res/drawable-pl-xxhdpi
-cd nf/res
-unzip -j -q '../../patched-Settings.apk' res/layout/m_notification_remoteview.xml -d 'layout'
-cp -r '../../../Settings/res/drawable-pl-xxhdpi/*' 'drawable-pl-xxhdpi'
-cd ..
-zip '../../out/system/priv-app/Settings.apk' -q -r 'res'
-cd ..
-
+#echo -e "\nPreparing secutiry notification mod.."
+#
+#'../../tools/apktool' --quiet d -f '../out/system/priv-app/Settings.apk'
+#cp -r ../Settings/res/layout/* Settings/res/layout
+#'../../tools/apktool' --quiet b -f 'Settings' 'patched-Settings.apk'
+#mkdir -p nf/res/layout
+#mkdir -p nf/res/drawable-pl-xxhdpi
+#cd nf/res
+#unzip -j -q '../../patched-Settings.apk' res/layout/m_notification_remoteview.xml -d 'layout'
+#cp -r '../../../Settings/res/drawable-pl-xxhdpi/*' 'drawable-pl-xxhdpi'
+#cd ..
+#zip '../../out/system/priv-app/Settings.apk' -q -r 'res'
+#cd ..
+#
 echo -e "\nPreparing theme mod.."
 
 cp ../ThemeManager/ThemeManager.patch ThemeManager.patch
@@ -135,30 +134,41 @@ cd mc
 zip '../../out/system/app/ThemeManager.apk' -q 'classes.dex'
 cd ..
 
-'../../tools/apktool' --quiet d -f '../../miui/XXHDPI/system/app/Weather.apk'
-cp -u -r ../../miuipolska/Polish/main/Weather.apk/* Weather
-'../../tools/apktool' --quiet b -f 'Weather' 'Weather.apk'
+#'../../tools/apktool' --quiet d -f '../../miui/XXHDPI/system/app/Weather.apk'
+#cp -u -r ../../miuipolska/Polish/main/Weather.apk/* Weather
+#'../../tools/apktool' --quiet b -f 'Weather' 'Weather.apk'
 
-java -jar '/home/kamilz/patchromv542/mi3w/other/signapk.jar' '/home/kamilz/patchromv542/mi3w/other/platform.x509.pem' '/home/kamilz/patchromv542/mi3w/other/platform.pk8' "Mms.apk" "signed-Mms.apk"
+java -jar "$PORT_ROOT/tools/signapk.jar" "$PORT_ROOT/build/security/platform.x509.pem" "$PORT_ROOT/build/security/platform.pk8" "Mms.apk" "signed-Mms.apk"
 '../other/zipalign' -f 4 "signed-Mms.apk" "zipaligned-signed-Mms.apk"
-java -jar '/home/kamilz/patchromv542/mi3w/other/signapk.jar' '/home/kamilz/patchromv542/mi3w/other/platform.x509.pem' '/home/kamilz/patchromv542/mi3w/other/platform.pk8' "Weather.apk" "signed-Weather.apk"
-'../other/zipalign' -f 4 "signed-Weather.apk" "zipaligned-signed-Weather.apk"
+#java -jar "$PORT_ROOT/tools/signapk.jar" "$PORT_ROOT/build/security/platform.x509.pem" "$PORT_ROOT/build/security/platform.pk8" "Weather.apk" "signed-Weather.apk"
+#'../other/zipalign' -f 4 "signed-Weather.apk" "zipaligned-signed-Weather.apk"
 cd ..
 
 mv -f temp/zipaligned-signed-Mms.apk out/system/priv-app/Mms.apk
-mv -f temp/zipaligned-signed-Weather.apk out/system/app/Weather.apk
+#mv -f temp/zipaligned-signed-Weather.apk out/system/app/Weather.apk
 
 echo -e "\nPreparing icon mods.."
 
 #cp -f other/ThemeManager.apk out/system/app/ThemeManager.apk
 cp -f other/icons out/system/media/theme/default/icons
-cp -f other/miui_mod_icons/*.png out/system/media/theme/miui_mod_icons/
+#cp -f other/miui_mod_icons/*.png out/system/media/theme/miui_mod_icons/
 
-echo -e "\nReplacing WeatherBZ with MIUI Weather.."
+#echo -e "\nReplacing WeatherBZ with MIUI Weather.."
+#
+#rm -f out/system/app/FancyWeatherIconsTheme.apk
+#rm -f out/system/app/pro.burgerz.weather*.apk
+#rm -f out/system/app/WeatherDummy.apk
+#
 
-rm -f out/system/app/FancyWeatherIconsTheme.apk
-rm -f out/system/app/pro.burgerz.weather*.apk
-rm -f out/system/app/WeatherDummy.apk
+echo -e "\nRemoving Xperia keyboard.."
+rm -f out/system/app/XperiaKeyboard.apk
+rm -rf out/system/usr/xt9
+
+echo -e "\nRemoving live wallpaper examples.."
+rm -f out/system/app/BasicDreams.apk
+rm -f out/system/app/HoloSpiralWallpaper.apk
+rm -f out/system/app/MagicSmokeWallpapers.apk
+rm -f out/system/app/PhaseBeam.apk
 
 echo -e "\nInit app_process for WSM.."
 mv out/system/bin/app_process out/system/bin/app_process.orig
@@ -179,7 +189,7 @@ rm -r out
 
 echo -e "\nSigning rom.."
 
-java -jar '/home/kamilz/patchromv542/mi3w/other/signapk.jar' '/home/kamilz/patchromv542/mi3w/other/testkey.x509.pem' '/home/kamilz/patchromv542/mi3w/other/testkey.pk8' "tosign-MIUIPolska_cancro_$version-4.4-z25.zip" "MIUIPolska_cancro_$version-4.4-z25.zip"
+java -Xmx2048m -jar "$PORT_ROOT/tools/signapk.jar" -w "$PORT_ROOT/build/security/testkey.x509.pem" "$PORT_ROOT/build/security/testkey.pk8" "tosign-MIUIPolska_cancro_$version-4.4-z25.zip" "MIUIPolska_cancro_$version-4.4-z25.zip"
 rm "tosign-MIUIPolska_cancro_$version-4.4-z25.zip"
 echo -e "\n"
 
