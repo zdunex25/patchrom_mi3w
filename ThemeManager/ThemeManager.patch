@@ -1,0 +1,319 @@
+
+--- a/ThemeManager/smali/miui/resourcebrowser/controller/online/DrmService.smali
++++ b/ThemeManager/smali/miui/resourcebrowser/controller/online/DrmService.smali	
+@@ -636,249 +636,9 @@
+ .end method
+ 
+ .method public isLegal(Lmiui/resourcebrowser/model/Resource;)Z
+-    .locals 14
+-    .parameter "origin"
+-
+-    .prologue
+-    .line 170
+-    invoke-virtual {p1}, Lmiui/resourcebrowser/model/Resource;->clone()Lmiui/resourcebrowser/model/Resource;
+-
+-    move-result-object v4
+-
+-    .line 172
+-    .local v4, resource:Lmiui/resourcebrowser/model/Resource;
+-    new-instance v5, Ljava/io/File;
+-
+-    new-instance v11, Lmiui/resourcebrowser/model/ResourceResolver;
+-
+-    iget-object v12, p0, Lmiui/resourcebrowser/controller/online/DrmService;->mResContext:Lmiui/resourcebrowser/ResourceContext;
+-
+-    invoke-direct {v11, v4, v12}, Lmiui/resourcebrowser/model/ResourceResolver;-><init>(Lmiui/resourcebrowser/model/Resource;Lmiui/resourcebrowser/ResourceContext;)V
+-
+-    invoke-virtual {v11}, Lmiui/resourcebrowser/model/ResourceResolver;->getRightsPath()Ljava/lang/String;
+-
+-    move-result-object v11
+-
+-    invoke-direct {v5, v11}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+-
+-    .line 174
+-    .local v5, rightsFile:Ljava/io/File;
+-    const-string v11, "Theme"
+-
+-    new-instance v12, Ljava/lang/StringBuilder;
+-
+-    invoke-direct {v12}, Ljava/lang/StringBuilder;-><init>()V
+-
+-    const-string v13, "   check rights file: "
+-
+-    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    move-result-object v12
+-
+-    invoke-virtual {v5}, Ljava/io/File;->getName()Ljava/lang/String;
+-
+-    move-result-object v13
+-
+-    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    move-result-object v12
+-
+-    invoke-virtual {v12}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object v12
+-
+-    invoke-static {v11, v12}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+-
+-    .line 176
+-    invoke-static {}, Lmiui/resourcebrowser/AppInnerContext;->getInstance()Lmiui/resourcebrowser/AppInnerContext;
+-
+-    move-result-object v11
+-
+-    invoke-virtual {v11}, Lmiui/resourcebrowser/AppInnerContext;->getApplicationContext()Landroid/content/Context;
+-
+-    move-result-object v1
+-
+-    .line 177
+-    .local v1, context:Landroid/content/Context;
+-    invoke-virtual {v4}, Lmiui/resourcebrowser/model/Resource;->getSubResources()Ljava/util/List;
+-
+-    move-result-object v8
+-
+-    .line 178
+-    .local v8, subResources:Ljava/util/List;,"Ljava/util/List<Lmiui/resourcebrowser/model/RelatedResource;>;"
+-    if-eqz v8, :cond_6
+-
+-    invoke-interface {v8}, Ljava/util/List;->size()I
+-
+-    move-result v11
+-
+-    if-lez v11, :cond_6
+-
+-    .line 179
+-    invoke-interface {v8}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+-
+-    move-result-object v3
+-
+-    .local v3, i$:Ljava/util/Iterator;
+-    :cond_0
+-    invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
+-
+-    move-result v11
+-
+-    if-eqz v11, :cond_7
+-
+-    invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+-
+-    move-result-object v7
+-
+-    check-cast v7, Lmiui/resourcebrowser/model/RelatedResource;
+-
+-    .line 180
+-    .local v7, subResource:Lmiui/resourcebrowser/model/RelatedResource;
+-    iget-object v11, p0, Lmiui/resourcebrowser/controller/online/DrmService;->mWhiteList:Ljava/util/Set;
+-
+-    if-eqz v11, :cond_1
+-
+-    iget-object v11, p0, Lmiui/resourcebrowser/controller/online/DrmService;->mWhiteList:Ljava/util/Set;
+-
+-    invoke-virtual {v7}, Lmiui/resourcebrowser/model/RelatedResource;->getResourceCode()Ljava/lang/String;
+-
+-    move-result-object v12
+-
+-    invoke-interface {v11, v12}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+-
+-    move-result v11
+-
+-    if-nez v11, :cond_0
+-
+-    .line 183
+-    :cond_1
+-    new-instance v6, Lmiui/resourcebrowser/model/RelatedResourceResolver;
+-
+-    iget-object v11, p0, Lmiui/resourcebrowser/controller/online/DrmService;->mResContext:Lmiui/resourcebrowser/ResourceContext;
+-
+-    invoke-direct {v6, v7, v11}, Lmiui/resourcebrowser/model/RelatedResourceResolver;-><init>(Lmiui/resourcebrowser/model/RelatedResource;Lmiui/resourcebrowser/ResourceContext;)V
+-
+-    .line 184
+-    .local v6, sol:Lmiui/resourcebrowser/model/RelatedResourceResolver;
+-    invoke-virtual {v6}, Lmiui/resourcebrowser/model/RelatedResourceResolver;->getContentPath()Ljava/lang/String;
+-
+-    move-result-object v0
+-
+-    .line 185
+-    .local v0, contentPath:Ljava/lang/String;
+-    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+-
+-    move-result v11
+-
+-    if-nez v11, :cond_2
+-
+-    new-instance v11, Ljava/io/File;
+-
+-    invoke-direct {v11, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+-
+-    invoke-virtual {v11}, Ljava/io/File;->exists()Z
+-
+-    move-result v11
+-
+-    if-nez v11, :cond_3
+-
+-    .line 186
+-    :cond_2
+-    const/4 v11, 0x0
+-
+-    .line 206
+-    .end local v0           #contentPath:Ljava/lang/String;
+-    .end local v3           #i$:Ljava/util/Iterator;
+-    .end local v6           #sol:Lmiui/resourcebrowser/model/RelatedResourceResolver;
+-    .end local v7           #subResource:Lmiui/resourcebrowser/model/RelatedResource;
+-    :goto_0
+-    return v11
+-
+-    .line 189
+-    .restart local v0       #contentPath:Ljava/lang/String;
+-    .restart local v3       #i$:Ljava/util/Iterator;
+-    .restart local v6       #sol:Lmiui/resourcebrowser/model/RelatedResourceResolver;
+-    .restart local v7       #subResource:Lmiui/resourcebrowser/model/RelatedResource;
+-    :cond_3
+-    invoke-static {v0}, Lmiui/resourcebrowser/util/ResourceHelper;->calculateFileHash(Ljava/lang/String;)Ljava/lang/String;
+-
+-    move-result-object v2
+-
+-    .line 191
+-    .local v2, hash:Ljava/lang/String;
+-    const/4 v10, 0x0
+-
+-    .line 192
+-    .local v10, valid:Z
+-    new-instance v9, Ljava/io/File;
+-
+-    invoke-virtual {v6}, Lmiui/resourcebrowser/model/RelatedResourceResolver;->getRightsPath()Ljava/lang/String;
+-
+-    move-result-object v11
+-
+-    invoke-direct {v9, v11}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+-
+-    .line 193
+-    .local v9, subRightsFile:Ljava/io/File;
+-    invoke-virtual {v9}, Ljava/io/File;->exists()Z
+-
+-    move-result v11
+-
+-    if-eqz v11, :cond_4
+-
+-    .line 194
+-    invoke-static {v1, v2, v9}, Lmiui/drm/DrmManager;->isLegal(Landroid/content/Context;Ljava/lang/String;Ljava/io/File;)Z
+-
+-    move-result v10
+-
+-    .line 196
+-    :cond_4
+-    if-nez v10, :cond_5
+-
+-    .line 197
+-    invoke-static {v1, v2, v5}, Lmiui/drm/DrmManager;->isLegal(Landroid/content/Context;Ljava/lang/String;Ljava/io/File;)Z
+-
+-    move-result v10
+-
+-    .line 199
+-    :cond_5
+-    if-nez v10, :cond_0
+-
+-    .line 200
+-    const/4 v11, 0x0
+-
+-    goto :goto_0
+-
+-    .line 203
+-    .end local v0           #contentPath:Ljava/lang/String;
+-    .end local v2           #hash:Ljava/lang/String;
+-    .end local v3           #i$:Ljava/util/Iterator;
+-    .end local v6           #sol:Lmiui/resourcebrowser/model/RelatedResourceResolver;
+-    .end local v7           #subResource:Lmiui/resourcebrowser/model/RelatedResource;
+-    .end local v9           #subRightsFile:Ljava/io/File;
+-    .end local v10           #valid:Z
+-    :cond_6
+-    invoke-virtual {v4}, Lmiui/resourcebrowser/model/Resource;->getHash()Ljava/lang/String;
+-
+-    move-result-object v11
+-
+-    invoke-static {v1, v11, v5}, Lmiui/drm/DrmManager;->isLegal(Landroid/content/Context;Ljava/lang/String;Ljava/io/File;)Z
+-
+-    move-result v11
+-
+-    if-nez v11, :cond_7
+-
+-    .line 204
+-    const/4 v11, 0x0
+-
+-    goto :goto_0
+-
+-    .line 206
+-    :cond_7
+-    const/4 v11, 0x1
+-
+-    goto :goto_0
++    .locals 7
++    const/4 v0, 0x1
++    return v0
+ .end method
+ 
+ .method public setWhiteList(Ljava/util/Set;)V
+
+--- a/ThemeManager/smali/miui/resourcebrowser/model/Resource.smali
++++ b/ThemeManager/smali/miui/resourcebrowser/model/Resource.smali	
+@@ -1011,16 +1011,8 @@
+ .end method
+ 
+ .method public isProductBought()Z
+-    .locals 1
+-
+-    .prologue
+-    .line 91
+-    iget-object v0, p0, Lmiui/resourcebrowser/model/Resource;->onlineProperties:Lmiui/resourcebrowser/model/ResourceOnlineProperties;
+-
+-    invoke-virtual {v0}, Lmiui/resourcebrowser/model/ResourceOnlineProperties;->isProductBought()Z
+-
+-    move-result v0
+-
++    .locals 7
++    const/4 v0, 0x1
+     return v0
+ .end method
+ 
+
+--- a/ThemeManager/smali/miui/resourcebrowser/view/ResourceOperationHandler.smali
++++ b/ThemeManager/smali/miui/resourcebrowser/view/ResourceOperationHandler.smali	
+@@ -572,16 +572,8 @@
+ .end method
+ 
+ .method public isAuthorizedResource()Z
+-    .locals 1
+-
+-    .prologue
+-    .line 184
+-    iget-object v0, p0, Lmiui/resourcebrowser/view/ResourceOperationHandler;->mResource:Lmiui/resourcebrowser/model/Resource;
+-
+-    invoke-virtual {v0}, Lmiui/resourcebrowser/model/Resource;->isProductBought()Z
+-
+-    move-result v0
+-
++    .locals 7
++    const/4 v0, 0x1
+     return v0
+ .end method
+ 
+@@ -670,15 +670,12 @@
+ .end method
+ 
+ .method protected isLegal()Z
+-    .locals 1
+-
+-    .prologue
+-    .line 262
+-    iget-boolean v0, p0, Lmiui/resourcebrowser/view/ResourceOperationHandler;->mIsLegal:Z
+-
++    .locals 7
++    const/4 v0, 0x1
+     return v0
+ .end method
+ 
++
+ .method public isLocalResource()Z
+     .locals 2
+ 

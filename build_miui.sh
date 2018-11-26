@@ -1,17 +1,23 @@
 #!/bin/bash
-x=`date +%Y`
-y=`date +.%-m.%-d`
-z=${x: -1:1}
-version=$z$y
+yearinput=`date +%Y`
+monthday=`date +.%-m.%-d`
+year=${yearinput: -1:1}
+version=$year$monthday\_kk
+version2=`date --date="last Fri" +$year.%-m.%-d`
 GIT_APPLY=../../tools/git.apply
 
 cd ..
 . build/envsetup.sh -p mi3w
 cd mi3w
-unzip -q MIUIPolska_cancro_$version\_kk-4.4.zip -d out
 
-'../tools/apktool' if 'out/system/framework/framework-res.apk'
-'../tools/apktool' if 'out/system/framework/framework-miui-res.apk'
+if [ ! -f "MIUIPolska_cancro_$version-4.4.zip" ]; then
+    unzip -q MIUIPolska_cancro_$version2\_kk-4.4.zip -d out
+else
+    unzip -q MIUIPolska_cancro_$version-4.4.zip -d out
+fi
+
+'../tools/apktool' if '../miui/XXHDPI/system/framework/framework-res.apk'
+'../tools/apktool' if '../miui/XXHDPI/system/framework/framework-miui-res.apk'
 
 echo -e "\nPreparing frameworks.."
 
@@ -40,38 +46,38 @@ cd ext
 zip '../../out/system/framework/framework2.jar' -q 'classes.dex'
 cd ..
 
-if [ ! -f ../out/system/app/m7Parts.apk ]; then
-echo -e "\nPreparing statusbar layout mod.."
-
-cp ../MiuiSystemUI/MiuiSystemUI.patch MiuiSystemUI.patch
-'../../tools/apktool' --quiet d -f '../out/system/priv-app/MiuiSystemUI.apk'
-cp -r ../MiuiSystemUI/res/layout/* MiuiSystemUI/res/layout
-$GIT_APPLY MiuiSystemUI.patch
-for file in `find $2 -name *.rej`
-do
-    echo "$file patch failed"
-    exit 1
-done
-'../../tools/apktool' --quiet b -f 'MiuiSystemUI' 'patched-MiuiSystemUI.apk'
-mkdir -p ui/res/layout
-mkdir ui/res/xml
-unzip -j -q 'patched-MiuiSystemUI.apk' classes.dex -d 'ui'
-unzip -j -q 'patched-MiuiSystemUI.apk' resources.arsc -d 'ui'
-cd ui/res
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/xml/advanced_settings.xml -d 'xml'
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/signal_cluster_view_ios.xml -d 'layout'
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/status_bar_center.xml -d 'layout'
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/status_bar_ios.xml -d 'layout'
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/status_bar_simple.xml -d 'layout'
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/super_status_bar_center.xml -d 'layout'
-unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/super_status_bar_ios.xml -d 'layout'
-cd ..
-zip '../../out/system/priv-app/MiuiSystemUI.apk' -q 'classes.dex'
-zip '../../out/system/priv-app/MiuiSystemUI.apk' -q 'resources.arsc'
-zip '../../out/system/priv-app/MiuiSystemUI.apk' -q -r 'res'
-cd ..
-cp -f ../other/m7Parts.apk ../out/system/app/m7Parts.apk
-fi
+#if [ ! -f ../out/system/app/m7Parts.apk ]; then
+#echo -e "\nPreparing statusbar layout mod.."
+#
+#cp ../MiuiSystemUI/MiuiSystemUI.patch MiuiSystemUI.patch
+#'../../tools/apktool' --quiet d -f '../out/system/priv-app/MiuiSystemUI.apk'
+#cp -r ../MiuiSystemUI/res/layout/* MiuiSystemUI/res/layout
+#$GIT_APPLY MiuiSystemUI.patch
+#for file in `find $2 -name *.rej`
+#do
+#    echo "$file patch failed"
+#    exit 1
+#done
+#'../../tools/apktool' --quiet b -f 'MiuiSystemUI' 'patched-MiuiSystemUI.apk'
+#mkdir -p ui/res/layout
+#mkdir ui/res/xml
+#unzip -j -q 'patched-MiuiSystemUI.apk' classes.dex -d 'ui'
+#unzip -j -q 'patched-MiuiSystemUI.apk' resources.arsc -d 'ui'
+#cd ui/res
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/xml/advanced_settings.xml -d 'xml'
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/signal_cluster_view_ios.xml -d 'layout'
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/status_bar_center.xml -d 'layout'
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/status_bar_ios.xml -d 'layout'
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/status_bar_simple.xml -d 'layout'
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/super_status_bar_center.xml -d 'layout'
+#unzip -j -q '../../patched-MiuiSystemUI.apk' res/layout/super_status_bar_ios.xml -d 'layout'
+#cd ..
+#zip '../../out/system/priv-app/MiuiSystemUI.apk' -q 'classes.dex'
+#zip '../../out/system/priv-app/MiuiSystemUI.apk' -q 'resources.arsc'
+#zip '../../out/system/priv-app/MiuiSystemUI.apk' -q -r 'res'
+#cd ..
+#cp -f ../other/m7Parts2.apk ../out/system/app/m7Parts.apk
+#fi
 
 #echo -e "\nPreparing miui searchbox fix.."
 #
@@ -134,45 +140,28 @@ cd mc
 zip '../../out/system/app/ThemeManager.apk' -q 'classes.dex'
 cd ..
 
-#'../../tools/apktool' --quiet d -f '../../miui/XXHDPI/system/app/Weather.apk'
-#cp -u -r ../../miuipolska/Polish/main/Weather.apk/* Weather
-#'../../tools/apktool' --quiet b -f 'Weather' 'Weather.apk'
-
 java -jar "$PORT_ROOT/tools/signapk.jar" "$PORT_ROOT/build/security/platform.x509.pem" "$PORT_ROOT/build/security/platform.pk8" "Mms.apk" "signed-Mms.apk"
 '../other/zipalign' -f 4 "signed-Mms.apk" "zipaligned-signed-Mms.apk"
-#java -jar "$PORT_ROOT/tools/signapk.jar" "$PORT_ROOT/build/security/platform.x509.pem" "$PORT_ROOT/build/security/platform.pk8" "Weather.apk" "signed-Weather.apk"
-#'../other/zipalign' -f 4 "signed-Weather.apk" "zipaligned-signed-Weather.apk"
 cd ..
 
 mv -f temp/zipaligned-signed-Mms.apk out/system/priv-app/Mms.apk
-#mv -f temp/zipaligned-signed-Weather.apk out/system/app/Weather.apk
 
 echo -e "\nPreparing icon mods.."
 
-#cp -f other/ThemeManager.apk out/system/app/ThemeManager.apk
 cp -f other/icons out/system/media/theme/default/icons
 #cp -f other/miui_mod_icons/*.png out/system/media/theme/miui_mod_icons/
 
-#echo -e "\nReplacing WeatherBZ with MIUI Weather.."
+#echo -e "\nRemoving Xperia keyboard.."
+#rm -f out/system/app/XperiaKeyboard.apk
+#rm -rf out/system/usr/xt9
 #
-#rm -f out/system/app/FancyWeatherIconsTheme.apk
-#rm -f out/system/app/pro.burgerz.weather*.apk
-#rm -f out/system/app/WeatherDummy.apk
-#
-
-echo -e "\nRemoving Xperia keyboard.."
-rm -f out/system/app/XperiaKeyboard.apk
-rm -rf out/system/usr/xt9
-
-echo -e "\nRemoving live wallpaper examples.."
-rm -f out/system/app/BasicDreams.apk
-rm -f out/system/app/HoloSpiralWallpaper.apk
-rm -f out/system/app/MagicSmokeWallpapers.apk
-rm -f out/system/app/PhaseBeam.apk
 
 echo -e "\nInit app_process for WSM.."
 mv out/system/bin/app_process out/system/bin/app_process.orig
 cp other/app_process_xposed_sdk16 out/system/bin/app_process
+
+cp other/LiveWallpapers.apk out/system/app/LiveWallpapers.apk
+cp other/LiveWallpapersPicker.apk out/system/app/LiveWallpapersPicker.apk
 
 rm -r temp
 
@@ -183,17 +172,17 @@ rm META-INF/MANIFEST.MF
 
 echo -e "\nCreating flashable rom.."
 
-zip -q -r "../tosign-MIUIPolska_cancro_$version-4.4-z25.zip" "data" "META-INF" "recovery" "system" "boot.img" "emmc_appsboot.mbn" "file_contexts" "NON-HLOS.bin" "rpm.mbn" "sbl1.mbn" "sdi.mbn" "tz.mbn"
+zip -q -r "../tosign-update.zip" "data" "META-INF" "recovery" "system" "boot.img" "emmc_appsboot.mbn" "file_contexts" "NON-HLOS.bin" "rpm.mbn" "sbl1.mbn" "sdi.mbn" "tz.mbn"
 cd ..
 rm -r out
 
 echo -e "\nSigning rom.."
 
-java -Xmx2048m -jar "$PORT_ROOT/tools/signapk.jar" -w "$PORT_ROOT/build/security/testkey.x509.pem" "$PORT_ROOT/build/security/testkey.pk8" "tosign-MIUIPolska_cancro_$version-4.4-z25.zip" "MIUIPolska_cancro_$version-4.4-z25.zip"
-rm "tosign-MIUIPolska_cancro_$version-4.4-z25.zip"
+java -Xmx2048m -jar "$PORT_ROOT/tools/signapk.jar" -w "$PORT_ROOT/build/security/testkey.x509.pem" "$PORT_ROOT/build/security/testkey.pk8" "tosign-update.zip" "update.zip"
+rm "tosign-update.zip"
 echo -e "\n"
 
 grep -v 'aapt: warning: string*' 'miui_log.log' >> 'miui_log_mi3w.log'
 rm miui_log.log
 
-read -p "Done, MIUIPolska_cancro_$version-4.4-z25.zip has been created in root of mi3w directory, copy to sd and flash it!"
+read -p "Done, update.zip has been created in root of mi3w directory, copy to sd and flash it!"

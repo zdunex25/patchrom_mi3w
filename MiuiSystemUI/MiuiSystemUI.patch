@@ -1,7 +1,7 @@
 
 --- a/MiuiSystemUI/res/values/public.xml
 +++ b/MiuiSystemUI/res/values/public.xml
-@@ -436,6 +436,14 @@
+@@ -565,6 +565,14 @@
      <public type="layout" name="task_item_view" id="0x7f030032" />
      <public type="layout" name="task_manager" id="0x7f030033" />
      <public type="layout" name="torch_main" id="0x7f030034" />
@@ -19,8 +19,8 @@
 
 --- a/MiuiSystemUI/smali/com/android/systemui/statusbar/phone/PhoneStatusBar.smali
 +++ b/MiuiSystemUI/smali/com/android/systemui/statusbar/phone/PhoneStatusBar.smali
-@@ -2417,6 +2417,47 @@
-     return-object v0
+@@ -3665,6 +3665,47 @@
+     return-void
  .end method
  
 +.method private getStatusBarType(I)I
@@ -67,8 +67,8 @@
  .method private cc()V
      .locals 5
  
-@@ -8035,6 +8035,10 @@
-     .line 670
+@@ -8729,6 +8729,10 @@
+     .line 675
      const v0, 0x7f030024
  
 +    invoke-direct {p0, v0}, Lcom/android/systemui/statusbar/phone/PhoneStatusBar;->getStatusBarType(I)I
